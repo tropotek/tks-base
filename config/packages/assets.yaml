@@ -1,0 +1,7 @@
+framework:
+    assets:
+        packages:
+            unify:
+                json_manifest_path: '%kernel.project_dir%/public/unify/css/manifest.json'
+            unify-admin:
+                json_manifest_path: '%kernel.project_dir%/public/unify-admin/css/manifest.json'
