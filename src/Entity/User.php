@@ -28,9 +28,61 @@ class User implements UserInterface
     private $username;
 
     /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $email;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $lastLogin;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $modified;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+
+
+
+    /**
+     * @throws \Exception
+     */
+    public function __construct()
+    {
+        $this->setUsername('');
+        $this->setName('');
+        $this->setEmail('');
+        $this->setPhone('');
+        $this->setMessage('');
+
+        // we set up "created"+"modified"
+        $this->setCreated(new \DateTime());
+//        if ($this->getModified() == null) {
+//            $this->setModified(new \DateTime());
+//        }
+    }
+
+
 
     /**
      * @var string The hashed password
@@ -105,6 +157,8 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 
     /**
      * @see UserInterface
