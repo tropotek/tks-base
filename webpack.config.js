@@ -24,9 +24,8 @@ Encore
    * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
    */
   //.addEntry('app', './assets/js/app.js')
-  //.addEntry('page1', './assets/js/page1.js')
-  //.addEntry('page2', './assets/js/page2.js')
 
+  .addStyleEntry('dev', './assets/unify/dev.scss')
   .addStyleEntry('custom', './assets/unify/custom.scss')
   .addStyleEntry('unify', './assets/unify/unify.scss')
   .addStyleEntry('unify-components', './assets/unify/unify-components.scss')

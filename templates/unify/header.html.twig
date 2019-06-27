@@ -12,7 +12,7 @@
         <!-- End Responsive Toggle Button -->
 
         <!-- Logo -->
-        <a href="{{ path('home') }}" class="navbar-brand d-flex">
+        <a href="{{ path('app_home') }}" class="navbar-brand d-flex">
           <svg width="86px" height="32px" viewBox="0 0 86 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
               <g transform="translate(-78.000000, -19.000000)">
@@ -31,11 +31,19 @@
         <div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
           <ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
             <!-- Intro -->
-            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('home') }}" class="nav-link g-py-7 g-px-0">Home</a></li>
-            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('about') }}" class="nav-link g-py-7 g-px-0">About</a></li>
-            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('contact') }}" class="nav-link g-py-7 g-px-0">Contact</a></li>
-            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('login') }}" class="nav-link g-py-7 g-px-0">Login</a></li>
-            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('admin') }}" class="nav-link g-py-7 g-px-0">My Account</a></li>
+            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('app_home') }}" class="nav-link g-py-7 g-px-0">Home</a></li>
+            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('app_about') }}" class="nav-link g-py-7 g-px-0">About</a></li>
+            <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('app_contact') }}" class="nav-link g-py-7 g-px-0">Contact</a></li>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+              {% if app.user.hasRole('ROLE_USER') %}
+                <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('user_dashboard') }}" class="nav-link g-py-7 g-px-0">My Account</a></li>
+              {% elseif app.user.hasRole('ROLE_ADMIN') %}
+                <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('admin_dashboard') }}" class="nav-link g-py-7 g-px-0">My Account</a></li>
+              {% endif %}
+                <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('app_logout') }}" class="nav-link g-py-7 g-px-0">Logout</a></li>
+            {% else %}
+              <li class="nav-item  g-mx-10--lg g-mx-15--xl"><a href="{{ path('app_login') }}" class="nav-link g-py-7 g-px-0">Login</a></li>
+            {% endif %}
             <!-- End Intro -->
           </ul>
         </div>

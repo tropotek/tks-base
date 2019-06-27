@@ -5,7 +5,7 @@
     <nav class="navbar no-gutters g-pa-0">
       <div class="col-auto d-flex flex-nowrap u-header-logo-toggler g-py-12">
         <!-- Logo -->
-        <a href="{{ path('home') }}" class="navbar-brand d-flex align-self-center g-hidden-xs-down g-line-height-1 py-0 g-mt-5">
+        <a href="{{ path('app_home') }}" class="navbar-brand d-flex align-self-center g-hidden-xs-down g-line-height-1 py-0 g-mt-5">
           <svg width="86px" height="32px" viewBox="0 0 86 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
               <g transform="translate(-78.000000, -19.000000)">
@@ -38,7 +38,7 @@
                 <span class="g-pos-rel">
                   <img class="g-width-30 g-width-40--md g-height-30 g-height-40--md rounded-circle g-mr-10--sm" src="{{ asset('unify-admin/img-temp/130x130/img1.jpg') }}" alt="Image description" />
                 </span>
-                <span class="g-pos-rel g-top-2"><span class="g-hidden-sm-down">Charlie Bailey</span> <i class="hs-admin-angle-down g-pos-rel g-top-2 g-ml-10"></i></span>
+                <span class="g-pos-rel g-top-2"><span class="g-hidden-sm-down">{{ app.user.username }}</span> <i class="hs-admin-angle-down g-pos-rel g-top-2 g-ml-10"></i></span>
             </a>
 
             <!-- Top User Menu -->
@@ -50,7 +50,7 @@
                 </a>
               </li>
               <li class="mb-0">
-                <a class="media g-color-primary--hover g-py-5 g-px-20" href="#">
+                <a class="media g-color-primary--hover g-py-5 g-px-20" href="{{ path('app_logout') }}">
                   <span class="d-flex align-self-center g-mr-12"><i class="hs-admin-shift-right"></i></span>
                   <span class="media-body align-self-center">Sign Out</span>
                 </a>

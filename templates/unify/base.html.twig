@@ -39,6 +39,10 @@
     <link rel="stylesheet" href="{{ asset('unify/css/unify-globals.css') }}" />
     <!-- CSS Customization -->
     <link rel="stylesheet" href="{{ asset('unify/css/custom.css') }}" />
+    {% if app.debug %}
+    <link rel="stylesheet" href="{{ asset('unify/css/dev.css') }}" />
+    {% endif %}
+
   {% endblock %}
 
 </head>
@@ -58,17 +62,28 @@
             <h2 class="h3 g-font-weight-300 w-100 g-mb-10 g-mb-0--md">Home</h2>
           </div>
           <div class="align-self-center ml-auto">
-            <ul class="u-list-inline">
-              <li class="list-inline-item g-color-primary">
-                <span>Home</span>
-              </li>
-            </ul>
+            <ul class="u-list-inline"><li class="list-inline-item g-color-primary"><span>Home</span></li></ul>
           </div>
         </div>
       </div>
     </section>
   {% endblock %}
   <!-- End Breadcrumbs -->
+
+
+  {%  if app.session.flashbag.peekAll() is not empty %}
+    <section class="container" style="margin-bottom: -40px;margin-top: 25px;">
+      {# read and display all flash messages #}
+      {% for label, messages in app.flashes %}
+        {% for message in messages %}
+          <div class="alert alert-{{ label }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </section>
+  {% endif %}
+
 
   {% block body %}{% endblock %}
 

@@ -23,8 +23,8 @@ class DashboardController extends AbstractController
 
     /**
      *
-     * @Route("/admin/", name="admin")
-     * @Route("/admin/dashboard", name="admin_index")
+     * @Route("/admin/", name="admin_dashboard")
+     * @Route("/admin/dashboard", name="admin_dashboard_index")
      *
      * @param Request $request
      * @return Response

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\User;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  * @link http://www.tropotek.com/
  * @license Copyright 2019 Michael Mifsud
  */
-class HomeController extends AbstractController
+class ProfileController extends AbstractController
 {
 
     public function __construct()
@@ -23,8 +23,7 @@ class HomeController extends AbstractController
 
     /**
      *
-     * @Route("/", name="app_home")
-     * @Route("/home", name="app_home_index")
+     * @Route("/user/profile", name="user_profile")
      *
      * @param Request $request
      * @return Response
@@ -32,11 +31,7 @@ class HomeController extends AbstractController
      */
     public function doDefault(Request $request)
     {
-        $number = random_int(0, 100);
-
-        return $this->render($this->getParameter('tk_theme_public') . '/home.html.twig', [
-            'number' => $number,
-        ]);
+        return $this->render($this->getParameter('tk_theme_public') . '/user/profile.html.twig');
     }
 
 }

@@ -23,7 +23,7 @@ class AboutController extends AbstractController
 
     /**
      *
-     * @Route("/about", name="about")
+     * @Route("/about", name="app_about")
      *
      * @param Request $request
      * @return Response
