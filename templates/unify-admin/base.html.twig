@@ -89,6 +89,7 @@
         <!-- End Breadcrumbs -->
 
         <div class="g-pa-20">
+
           {%  if app.session.flashbag.peekAll() is not empty %}
             <section class="container">
               {# read and display all flash messages #}
@@ -101,6 +102,9 @@
               {% endfor %}
             </section>
           {% endif %}
+
+          {% block body %}{% endblock %}
+
         </div>
 
         <!-- Footer -->

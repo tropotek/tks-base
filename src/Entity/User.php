@@ -28,6 +28,12 @@ class User implements UserInterface
     private $username;
 
     /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    private $password;
+
+    /**
      * @ORM\Column(type="string", length=180)
      */
     private $name;
@@ -50,11 +56,6 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="datetime")
      */
-    private $lastLogin;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
     private $modified;
 
     /**
@@ -69,26 +70,19 @@ class User implements UserInterface
      */
     public function __construct()
     {
+        $this->setPassword('');
         $this->setUsername('');
         $this->setName('');
         $this->setEmail('');
-        $this->setPhone('');
-        $this->setMessage('');
+        $this->setActive(true);
 
         // we set up "created"+"modified"
         $this->setCreated(new \DateTime());
-//        if ($this->getModified() == null) {
-//            $this->setModified(new \DateTime());
-//        }
+        if ($this->getModified() == null) {
+            $this->setModified(new \DateTime());
+        }
     }
 
-
-
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
 
     public function getId(): ?int
     {
@@ -158,7 +152,95 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
+    /**
+     * @param mixed $name
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param mixed $active
+     * @return User
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * @param mixed $modified
+     * @return User
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param mixed $created
+     * @return User
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
 
     /**
      * @see UserInterface

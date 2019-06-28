@@ -18,14 +18,14 @@ class SettingsController extends AbstractController
         $settings = $this->getDoctrine()->getRepository(\App\Entity\Settings::class)->find(1);
 
         $form = $this->createForm(\App\Form\SettingsType::class, $settings);
-        $form->handleRequest($request);
 
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
 
             $settings1 = $form->getData();
-
+dd($settings1);
 
 
             // ... perform some action, such as saving the task to the database
